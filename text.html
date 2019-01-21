@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 10px 0;
+        }
+        
+        #textIn {
+            padding: 6px 16px;
+            border: 1px solid #446d88;
+            background: #58a linear-gradient(#77a0bb, #58a);
+            border-radius: 4px;
+            box-shadow: 0 1px 5px gray;
+            color: white;
+            text-shadow: 0 -1px 1px #335166;
+            font-size: 20px;
+            line-height: 30px;
+        }
+        
+        #textA {
+            font-size: 20px;
+            line-height: 2;
+            /* 行高是字号的2倍 */
+            border: 1px solid #000;
+        }
+        
+        #button {
+            /* 相对父级的什么 */
+            padding: .3em .8em;
+            border: 1px solid #446d88;
+            background: #58a linear-gradient(#77a0bb, #58a);
+            border-radius: .2em;
+            box-shadow: 0 .05em .25em gray;
+            color: white;
+            text-shadow: 0 -.05em .05em #335166;
+            font-size: 125%;
+            line-height: 1.5;
+        }
+        
+        #cancel {
+            padding: .3em .8em;
+            border: 1px solid rgba(0, 0, 0, .1);
+            background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+            border-radius: .2em;
+            box-shadow: 0 -.05em .05em rgba(0, 0, 0, .5);
+            color: white;
+            text-shadow: 0 -.05em .05em rgba(0, 0, 0, .1);
+            font-size: 125%;
+            line-height: 1.5;
+            background-color: #c00;
+        }
+        
+        #ok {
+            padding: .3em .8em;
+            border: 1px solid rgba(0, 0, 0, .1);
+            background: #58a linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+            border-radius: .2em;
+            box-shadow: 0 -.05em .05em rgba(0, 0, 0, .5);
+            color: white;
+            text-shadow: 0 -.05em .05em rgba(0, 0, 0, .1);
+            font-size: 125%;
+            line-height: 1.5;
+            background-color: #6b0;
+        }
+        
+        .something-meaningful {
+            background: #665;
+            padding: .8em;
+        }
+        
+        .something-meaningful>div {
+            background: tan;
+            border-radius: .8em;
+            padding: 1em;
+        }
+        
+        #shuiPing {
+            background: linear-gradient(#fb3 33.3%, #58a 0);
+            background-size: 100% 30px;
+            line-height: 3;
+        }
+        
+        #wang {
+            background: #58a;
+            background-image: linear-gradient(white 2px, transparent 0), linear-gradient(90deg, white 2px, transparent 0), linear-gradient(hsla(0, 0%, 100%, .3) 1px, transparent 0), linear-gradient(90deg, hsla(0, 0%, 100%, .3) 1px, transparent 0);
+            background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+            height: 50px;
+        }
+        
+        #bac {
+            background: hsl(20, 40%, 90%);
+            background-image: linear-gradient(90deg, #fb3 11px, transparent 0), linear-gradient(90deg, #ab4 23px, transparent 0), linear-gradient(90deg, #655 41px, transparent 0);
+            background-size: 41px 100%, 61px 100%, 83px 100%;
+            height: 60px;
+        }
+        
+        #borTop {
+            border-top: .2em solid transparent;
+            border-image: 100% 0 0 linear-gradient(90deg, currentColor 4em, transparent 0);
+            padding-top: 1em;
+            background: yellow;
+            height: 50px;
+        }
+        
+        #tuo1 {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        
+        #tuo2 {
+            /* 如果“/”前后的值都存在，那么“/”前面的值设置其水平半径，“/”后面值设置其垂直半径。 */
+            border-radius: 50% / 100% 100% 0 0;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        
+        #tuo3 {
+            border-radius: 100% 0 0 100% / 50%;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        
+        #tuo4 {
+            border-radius: 100% 0 0 0;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        
+        #paral {
+            position: relative;
+        }
+        
+        #paral:before {
+            content: '';
+            /*用伪元素生成一个矩形 */
+            position: absolute;
+            top: 0;
+            /* right: 0; */
+            /* bottom: 0; */
+            left: 300px;
+            z-index: -1;
+            background: #58a;
+            transform: skew(45deg);
+            width: 100px;
+            height: 100px;
+        }
+        
+        #rhombus {
+            clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+            transition: 1s clip-path;
+            width: 100px;
+            height: 100px;
+            background: #58a;
+        }
+        
+        #rhombus:hover {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        #qie {
+            background: #58a;
+            background: linear-gradient(-45deg, transparent 15px, #58a 0) right, linear-gradient(45deg, transparent 15px, #655 0) left;
+            background-size: 50% 100%;
+            width: 100px;
+            height: 100px;
+        }
+        
+        #hu {
+            background: #58a;
+            background: radial-gradient(circle at top left, transparent 15px, #58a 0) top left, radial-gradient(circle at top right, transparent 15px, #58a 0) top right, radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right, radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+        }
+        
+        #tropezoid {
+            transform: scaleY(1.3) perspective(.5em) rotateX(5deg);
+            transform-origin: bottom;
+            /* 3D空间中旋转时把底边固定住 */
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        
+        #shadow1 {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            box-shadow: 0 5px 4px -4px black;
+        }
+        
+        #shadow2 {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            box-shadow: 3px 3px 6px -3px black;
+        }
+        
+        #shadow3 {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            /* 左右两边有投影 */
+            box-shadow: 5px 0 5px -5px black, -5px 0 5px -5px black;
+        }
+        
+        #shadow4 {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            /* 左右两边有投影 */
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, .5);
+            filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, .5));
+        }
+        
+        #ran {
+            transition: .5s filter;
+            filter: sepia(1) saturate(4) hue-rotate(295deg);
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        
+        #ran:focus {
+            filter: none;
+        }
+        
+        #mao {
+            position: relative;
+            background: hsla(0, 0%, 100%, .3);
+            overflow: hidden;
+            line-height: 2;
+            border: 1px solid #000;
+        }
+        
+        #mao::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            filter: blur(20px);
+            margin: -30px;
+        }
+        
+        #zhe {
+            width: 100px;
+            height: 100px;
+            background: #58a;
+            /* 回退样式 */
+            background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .4) 0) no-repeat 100% 0 / 2em 2em, linear-gradient(-135deg, transparent 1.5em, #58a 0);
+        }
+        
+        #com {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            background: #58a;
+            /* 回退样式 */
+            background: linear-gradient(-150deg, transparent 1.5em, #58a 0);
+            border-radius: .5em;
+        }
+        
+        #com:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, .2) 0, rgba(0, 0, 0, .4)) 100% 0 no-repeat;
+            width: 1.73em;
+            height: 3em;
+            transform: translateY(-1.3em) rotate((-30deg);
+            transform-origin: bottom right;
+            border-bottom-left-radius: inherit;
+            box-shadow: -.2em .2em .3em -.1em rgba(0, 0, 0, .15);
+        }
+        
+        #text1 {
+            height: 100px;
+            padding: .5em;
+            line-height: 1.5;
+            background: beige;
+            background-size: auto 3em;
+            background-origin: content-box;
+            background-image: linear-gradient(rgba(0, 0, 0, .2) 50%, transparent 0);
+        }
+        
+        #sub {
+            height: 100px;
+            background: linear-gradient(gray gray) no-repeat;
+            background-size: 100% 1px;
+            background-position: 0 1.15em;
+            text-shadow: .05em 0 white;
+        }
+        
+        #text2 {
+            background: hsl(210, 13%, 60%);
+            color: hsl(210, 13%, 30%);
+            text-shadow: 0 .03em .03em hsla(0, 0%, 100%, .8);
+        }
+        
+        #text3 {
+            background: hsl(210, 13%, 40%);
+            color: hsl(210, 13%, 75%);
+            text-shadow: 0 -1px 1px black;
+        }
+        
+        #text4 {
+            background: #203;
+            color: white;
+            transition: 1s;
+        }
+        
+        #text4:hover {
+            text-shadow: 0 0 .1em, 0 0 .3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="textIn">文本内嵌</div>
+    <div id="textA">当某些值相互依赖时，应该把它们的相互关系用代码表示出来</div>
+    <div id="button">文字需要和按钮一起变大</div>
+    <div id="cancel">只要把半透明的黑色或白色叠加到主调上，即可产生主色调的亮色和暗色变体</div>
+    <div id="ok">现在只要覆盖background-color属性，就可以得到不同属性的按钮了</div>
+    <div class="something-meaningful">
+        <div>
+            I have a nice subtle inner rounding, don't I look pretty?
+        </div>
+    </div>
+    <div id="shuiPing">如果第二个色标的位置值设为0，那它的位置总会被浏览器调整为一个色标的位置值</div>
+    <div id="wang"></div>
+    <div id="bac"></div>
+    <div id="borTop"></div>
+    <div id="tuo1"></div>
+    <div id="tuo2"></div>
+    <div id="tuo3"></div>
+    <div id="tuo4"></div>
+    <div id="paral"></div>
+    <div id="rhombus"></div>
+    <div id="qie"></div>
+    <div id="hu"></div>
+    <div id="tropezoid"></div>
+    <div id="shadow1"></div>
+    <div id="shadow2"></div>
+    <div id="shadow3"></div>
+    <div id="shadow4"></div>
+    <div id="ran"></div>
+    <div id="mao">
+        <blockquote>"The only way to get rid of a temptation[...]"
+            <footer>-
+                <cite>Oscar Wilde, The Picture of Dorian Gray </cite>
+            </footer>
+        </blockquote>
+    </div>
+    <div id="zhe"></div>
+    <div id="com"></div>
+    <div id="text1">文本行的斑马条纹</div>
+    <div id="sub">自定义下划线</div>
+    <div id="text2">浅色底-深色字</div>
+    <div id="text3">深色底-浅色字</div>
+    <div id="text4">文字外发光效果</div>
+    <div id="text5">文字凸起效果</div>
+</body>
+
+</html>
