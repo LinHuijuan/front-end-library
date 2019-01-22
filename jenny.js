@@ -95,3 +95,14 @@ function shake(obj, attr, pos, endFn) {
         }
     }, 50);
 }
+
+//事件绑定多个函数
+function bind(obj, evname, fn) {
+    if (obj.addEventListener) {
+        obj.addEventListener(evname, fn, false);
+    } else {
+        obj.attachEvent('on' + evname, function() {
+            fn.call(obj);
+        });
+    }
+}
