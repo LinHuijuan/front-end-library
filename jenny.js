@@ -1,4 +1,6 @@
 // JavaScript Document
+
+//'$'operation
 function $(v) {
     if (typeof v === 'function') {
         window.onload = v;
@@ -9,15 +11,15 @@ function $(v) {
     }
 }
 
-//获取样式
+//Get Style
 function getStyle(obj, attr) {
     //currentStyle(只兼容IE，只能获取不能设置）
     //getComputedStyle(只兼容火狐谷歌，只能获取不能设置)
     return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
 }
 
-//多值运动
-//dir是频率
+//Multivalued Motion
+//dir: frequency
 function doMove(obj, attr, dir, target, endFn) {
 
     dir = parseInt(getStyle(obj, attr)) < target ? dir : -dir;
@@ -49,7 +51,7 @@ function doMove(obj, attr, dir, target, endFn) {
     }, 30);
 }
 
-//系统时间
+//System Time
 function fnTime() {
     var oBody = document.body;
     var myTime = new Date();
@@ -71,7 +73,7 @@ function fnTime() {
 }
 
 
-//抖动函数
+//Shake Function
 //var pos = parseInt(getStyle(obj, attr));
 function shake(obj, attr, pos, endFn) {
 
@@ -95,7 +97,7 @@ function shake(obj, attr, pos, endFn) {
     }, 50);
 }
 
-//事件绑定多个函数
+//Events blind Multiple functions
 function bind(obj, evname, fn) {
     if (obj.addEventListener) {
         obj.addEventListener(evname, fn, false);
