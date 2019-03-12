@@ -1,5 +1,4 @@
 // JavaScript Document
-
 function $(v) {
     if (typeof v === 'function') {
         window.onload = v;
