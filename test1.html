@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Helloworld</title>
+    <style>
+        #text {
+            height: 100px;
+            padding: .5em;
+            line-height: 1.5;
+            background: beige;
+            /* background: #000; */
+            background-size: auto 3em;
+            background-origin: content-box;
+            background-image: linear-gradient(rgba(0, 0, 0, .2) 50%, transparent 0);
+        }
+        
+        #sub {
+            height: 100px;
+            background: linear-gradient(gray gray) no-repeat;
+            background-size: 100% 1px;
+            background-position: 0 1.15em;
+            text-shadow: .05em 0 white;
+        }
+        
+        #text2 {
+            background: hsl(210, 13%, 60%);
+            color: hsl(210, 13%, 30%);
+            text-shadow: 0 .03em .03em hsla(0, 0%, 100%, .8);
+        }
+        
+        #text3 {
+            background: hsl(210, 13%, 40%);
+            color: hsl(210, 13%, 75%);
+            text-shadow: 0 -1px 1px black;
+        }
+        
+        #text4 {
+            background: #203;
+            color: white;
+            transition: 1s;
+        }
+        
+        #text4:hover {
+            text-shadow: 0 0 .1em, 0 0 .3em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="text">文本行的斑马条纹</div>
+    <div id="sub">自定义下划线</div>
+    <div id="text2">浅色底-深色字</div>
+    <div id="text3">深色底-浅色字</div>
+    <div id="text4">文字外发光效果</div>
+</body>
+
+</html>
