@@ -26,7 +26,7 @@ function doMove(obj, attr, dir, target, endFn) {
 
     clearInterval(obj.timer);
 
-    obj.timer = setInterval(function() {
+    obj.timer = setInterval(function () {
 
         var speed = parseInt(getStyle(obj, attr)) + dir; // 步长
 
@@ -87,7 +87,7 @@ function shake(obj, attr, pos, endFn) {
     arr.push(0);
 
     clearInterval(obj.shake);
-    obj.shake = setInterval(function() {
+    obj.shake = setInterval(function () {
         obj.style[attr] = pos + arr[num] + 'px';
         num++;
         if (num === arr.length) {
@@ -97,13 +97,46 @@ function shake(obj, attr, pos, endFn) {
     }, 50);
 }
 
-//Events blind Multiple functions
-function bind(obj, evname, fn) {
-    if (obj.addEventListener) {
-        obj.addEventListener(evname, fn, false);
-    } else {
-        obj.attachEvent('on' + evname, function() {
-            fn.call(obj);
-        });
+var EventUtil = {
+
+    addHandler: function (element, type, handler) {
+        if (element.addEventListener) {
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent("on" + type, handler);
+        }
+    },
+
+    getEvent: function (event) {
+        return event || window.event;
+    },
+
+    getTarget: function (event) {
+        return event.target || event.srcElement;
+    },
+
+    preventDefault: function (event) {
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+
+    removeHandler: function (element, type, handler) {
+        if (element.removeEventListener) {
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent) {
+            element.detachEvent("on" + type, handler);
+        }
+    },
+
+    stopPropagation: function (event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
     }
-}
+
+};
