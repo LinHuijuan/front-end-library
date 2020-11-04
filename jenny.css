@@ -1,0 +1,21 @@
+// 输入框默认字体颜色
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #c7c7c7;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #c7c7c7;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #c7c7c7;
+}
+
+// 设置字体禁止缩放
+// 避免用户设置字号放大或者缩小导致页面布局错误
+body {
+  -webkit-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
+  -moz-text-size-adjust: 100% !important;
+}
